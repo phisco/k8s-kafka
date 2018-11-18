@@ -1,0 +1,4 @@
+resources:
+- kafka.yml
+- zookeeper.yml
+- schema-registry.yml
