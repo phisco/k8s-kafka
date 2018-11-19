@@ -48,6 +48,6 @@ spec:
           - name: KAFKA_REST_ZOOKEEPER_CONNECT
             value: kafka-zookeeper:2181
           - name: KAFKA_REST_SCHEMA_REGISTRY_URL
-            value: kafka-schema-registry:8081
+            value: http://kafka-schema-registry:8081
           - name: KAFKA_REST_LISTENERS
             value: http://0.0.0.0:8082
