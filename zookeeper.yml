@@ -48,7 +48,7 @@ metadata:
     app: zookeeper
 spec:
   serviceName: kafka-zookeeper-headless
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: zookeeper

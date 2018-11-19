@@ -1,4 +1,7 @@
+namespace: kafka
 resources:
 - kafka.yml
 - zookeeper.yml
 - schema-registry.yml
+- ksql-server.yml
+- kafka-rest.yml

@@ -1,0 +1,57 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ksql-server
+  labels:
+    app: cp-ksql-server
+spec:
+  ports:
+      - name: ksql-server
+        port: 8088
+  selector:
+    app: cp-ksql-server
+
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: ksql-server
+  labels:
+    app: cp-ksql-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cp-ksql-server
+  template:
+    metadata:
+      labels:
+        app: cp-ksql-server
+    spec:
+      containers:
+        - name: cp-ksql-server
+          image: "confluentinc/cp-ksql-server:5.0.1"
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - name: server
+              containerPort: 8088
+              protocol: TCP
+          #volumeMounts:
+          #- name: ksql-queries
+            #mountPath: /etc/ksql/queries
+          env:
+          - name: KSQL_BOOTSTRAP_SERVERS
+            value: PLAINTEXT://kafka:9092
+          - name: KSQL_LISTENERS
+            value: http://0.0.0.0:8088
+          - name: KSQL_CONFIG_DIR
+            value: http://schema-registry:8081
+          - name: KSQL_KSQL_SCHEMA_REGISTRY_URL
+            value: schema-registry:8081
+          #- name: KSQL_KSQL_QUERIES_FILE
+          #  value: /etc/ksql/queries/queries.sql
+      #volumes:
+      #- name: ksql-queries
+        #configMap:
+          #name: ksql-server-ksql-queries-configmap
