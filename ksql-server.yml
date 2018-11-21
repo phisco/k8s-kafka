@@ -42,7 +42,7 @@ spec:
             #mountPath: /etc/ksql/queries
           env:
           - name: KSQL_BOOTSTRAP_SERVERS
-            value: PLAINTEXT://kafka:9092
+            value: PLAINTEXT://kafka-k8s:9092
           - name: KSQL_LISTENERS
             value: http://0.0.0.0:8088
           - name: KSQL_CONFIG_DIR

@@ -36,7 +36,7 @@ subjects:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kafka
+  name: kafka-k8s
   labels:
     app: kafka
 spec:
@@ -66,7 +66,7 @@ spec:
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: kafka
+  name: kafka-k8s
   labels:
     app: kafka
 spec:
@@ -162,5 +162,5 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 1Gi
+          storage: 5Gi
 
