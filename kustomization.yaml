@@ -1,5 +1,6 @@
 namespace: kafka-k8s-2
 resources:
+- ns.yml
 - kafka.yml
 - zookeeper.yml
 - schema-registry.yml
